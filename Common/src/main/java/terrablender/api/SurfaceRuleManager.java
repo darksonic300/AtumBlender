@@ -114,10 +114,7 @@ public class SurfaceRuleManager
         if (defaultSurfaceRules.containsKey(category))
             return defaultSurfaceRules.get(category);
 
-        if (category == RuleCategory.NETHER)
-            return TBSurfaceRuleData.nether();
-
-        return TBSurfaceRuleData.overworld();
+        return TBSurfaceRuleData.aether();
     }
 
     /**
@@ -125,7 +122,7 @@ public class SurfaceRuleManager
      */
     public enum RuleCategory
     {
-        OVERWORLD, NETHER
+        AETHER
     }
 
     /**

@@ -22,8 +22,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import net.minecraft.resources.ResourceLocation;
 import terrablender.core.TerraBlender;
-import terrablender.worldgen.DefaultNetherRegion;
-import terrablender.worldgen.DefaultOverworldRegion;
+import terrablender.worldgen.DefaultAetherRegion;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -139,7 +138,6 @@ public class Regions
             indices.put(type, Maps.newHashMap());
         }
 
-        register(new DefaultOverworldRegion(TerraBlender.CONFIG.vanillaOverworldRegionWeight));
-        register(new DefaultNetherRegion(TerraBlender.CONFIG.vanillaNetherRegionWeight));
+        register(new DefaultAetherRegion(TerraBlender.CONFIG.vanillaAetherRegionWeight));
     }
 }

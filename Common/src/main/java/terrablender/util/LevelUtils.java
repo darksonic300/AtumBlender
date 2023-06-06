@@ -70,8 +70,7 @@ public class LevelUtils
 
     public static RegionType getRegionTypeForDimension(Holder<DimensionType> dimensionType)
     {
-        if (dimensionType.is(DimensionTypeTags.NETHER_REGIONS)) return RegionType.NETHER;
-        else if (dimensionType.is(DimensionTypeTags.OVERWORLD_REGIONS)) return RegionType.OVERWORLD;
+        if (dimensionType.is(DimensionTypeTags.AETHER_REGIONS)) return RegionType.AETHER;
         else return null;
     }
 

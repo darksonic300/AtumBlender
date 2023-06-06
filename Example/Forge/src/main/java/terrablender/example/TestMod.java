@@ -41,11 +41,11 @@ public class TestMod
         event.enqueueWork(() ->
         {
             // Weights are kept intentionally low as we add minimal biomes
-            Regions.register(new TestRegion1(new ResourceLocation(MOD_ID, "overworld_1"), 2));
-            Regions.register(new TestRegion2(new ResourceLocation(MOD_ID, "overworld_2"), 2));
+            Regions.register(new TestRegion1(new ResourceLocation(MOD_ID, "aether_1"), 2));
+            Regions.register(new TestRegion2(new ResourceLocation(MOD_ID, "aether_2"), 2));
 
             // Register our surface rules
-            SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MOD_ID, TestSurfaceRuleData.makeRules());
+            SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.AETHER, MOD_ID, TestSurfaceRuleData.makeRules());
         });
     }
 }

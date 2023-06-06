@@ -34,7 +34,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.function.Supplier;
 
-@Mixin(MultiNoiseBiomeSource.class)
+@Mixin(value = MultiNoiseBiomeSource.class, remap = false)
 public abstract class MixinMultiNoiseBiomeSource
 {
     @Shadow

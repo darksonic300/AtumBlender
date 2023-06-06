@@ -37,7 +37,7 @@ import terrablender.worldgen.noise.LayeredNoiseUtil;
 
 import java.util.List;
 
-@Mixin(Climate.ParameterList.class)
+@Mixin(value = Climate.ParameterList.class, remap = false)
 public abstract class MixinParameterList<T> implements IExtendedParameterList<T>
 {
     @Shadow

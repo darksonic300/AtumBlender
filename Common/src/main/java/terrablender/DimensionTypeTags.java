@@ -8,9 +8,7 @@ import net.minecraft.world.level.dimension.DimensionType;
 import terrablender.core.TerraBlender;
 
 public class DimensionTypeTags {
-
-    public static final TagKey<DimensionType> OVERWORLD_REGIONS = create("overworld_regions");
-    public static final TagKey<DimensionType> NETHER_REGIONS = create("nether_regions");
+    public static final TagKey<DimensionType> AETHER_REGIONS = create("aether_regions");
 
     private static TagKey<DimensionType> create(String id) {
         return TagKey.create(Registries.DIMENSION_TYPE, new ResourceLocation(TerraBlender.MOD_ID, id));

@@ -27,10 +27,7 @@ public class LayeredNoiseUtil
 {
     public static Area uniqueness(RegistryAccess registryAccess, RegionType regionType, long worldSeed)
     {
-        int numZooms = TerraBlender.CONFIG.overworldRegionSize;
-
-        if (regionType == RegionType.NETHER)
-            numZooms = TerraBlender.CONFIG.netherRegionSize;
+        int numZooms = TerraBlender.CONFIG.aetherRegionSize;
 
         LongFunction<AreaContext> contextFactory = (seedModifier) -> new AreaContext(25, worldSeed, seedModifier);
         AreaFactory factory = new InitialLayer(registryAccess, regionType).run(contextFactory.apply(1L));

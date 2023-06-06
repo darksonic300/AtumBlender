@@ -33,7 +33,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import terrablender.core.TerraBlender;
 import terrablender.worldgen.surface.NamespacedSurfaceRuleSource;
 
-@Mixin(BuiltInRegistries.class)
+@Mixin(value = BuiltInRegistries.class, remap = false)
 public abstract class MixinBuiltInRegistries
 {
     @Shadow

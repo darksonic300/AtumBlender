@@ -148,9 +148,9 @@ public abstract class Region
      * @param mapper the mapper used to construct a list of {@link Climate.ParameterPoint ParameterPoint} to biome mappings.
      * @param onModify a consumer which can be used to modify the Vanilla overworld parameters.
      */
-    protected final void addModifiedVanillaOverworldBiomes(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> mapper, Consumer<ModifiedVanillaOverworldBuilder> onModify)
+    protected final void addModifiedVanillaAetherBiomes(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> mapper, Consumer<ModifiedVanillaAetherBuilder> onModify)
     {
-        ModifiedVanillaOverworldBuilder builder = new ModifiedVanillaOverworldBuilder();
+        ModifiedVanillaAetherBuilder builder = new ModifiedVanillaAetherBuilder();
         onModify.accept(builder);
         builder.build().forEach(mapper::accept);
     }

@@ -48,10 +48,7 @@ public class VanillaParameterOverlayBuilder
         this.mappings.put(point, biome);
     }
 
-    /**
-     * Builds a list of {@link Climate.ParameterPoint} and {@link ResourceKey <Biome>} pairs.
-     * @return the built list.
-     */
+
     public List<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> build()
     {
         Set<Climate.ParameterPoint> standalonePoints = Sets.newHashSet(this.mappings.keySet());

@@ -24,7 +24,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(PrimaryLevelData.class)
+@Mixin(value = PrimaryLevelData.class, remap = false)
 public class MixinPrimaryLevelData
 {
     @Inject(method="worldGenSettingsLifecycle", at=@At("HEAD"), cancellable = true)

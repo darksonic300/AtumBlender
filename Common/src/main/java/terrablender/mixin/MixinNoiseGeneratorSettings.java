@@ -29,7 +29,7 @@ import terrablender.api.SurfaceRuleManager;
 import terrablender.worldgen.IExtendedNoiseGeneratorSettings;
 import terrablender.worldgen.surface.NamespacedSurfaceRuleSource;
 
-@Mixin(NoiseGeneratorSettings.class)
+@Mixin(value = NoiseGeneratorSettings.class, remap = false)
 public class MixinNoiseGeneratorSettings implements IExtendedNoiseGeneratorSettings
 {
     @Shadow
@@ -44,7 +44,7 @@ public class MixinNoiseGeneratorSettings implements IExtendedNoiseGeneratorSetti
         if (this.regionType != null)
         {
             if (this.namespacedSurfaceRuleSource == null)
-                this.namespacedSurfaceRuleSource = regionType == RegionType.NETHER ? SurfaceRuleManager.getNamespacedRules(SurfaceRuleManager.RuleCategory.NETHER, this.surfaceRule) : SurfaceRuleManager.getNamespacedRules(SurfaceRuleManager.RuleCategory.OVERWORLD, this.surfaceRule);
+                this.namespacedSurfaceRuleSource = SurfaceRuleManager.getNamespacedRules(SurfaceRuleManager.RuleCategory.AETHER, this.surfaceRule);
 
             cir.setReturnValue(this.namespacedSurfaceRuleSource);
         }
