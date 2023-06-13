@@ -1,8 +1,8 @@
 modLoader="javafml"
 license="LGPLv3"
 loaderVersion="[45,)"
-issueTrackerURL="https://github.com/Glitchfiend/TerraBlender/issues"
-displayURL="https://www.curseforge.com/minecraft/mc-mods/terrablender"
+issueTrackerURL="https://github.com/darksonic300/AtumBlender"
+displayURL="https://github.com/darksonic300/AtumBlender"
 logoFile="tb_logo.png"
 
 [[mods]]
