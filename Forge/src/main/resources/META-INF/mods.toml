@@ -6,13 +6,13 @@ displayURL="https://www.curseforge.com/minecraft/mc-mods/terrablender"
 logoFile="tb_logo.png"
 
 [[mods]]
-    modId="terrablender"
+    modId="atumblender"
     version="${file.jarVersion}"
-    displayName="TerraBlender"
-	authors="Adubbz"
-    description="A library mod for adding biomes in a simple and compatible manner with Minecraft's new biome/terrain system."
+    displayName="AtumBlender"
+	authors="RazorDevs"
+    description="A library mod for adding biomes in a simple and compatible manner with Aether's biome/terrain system."
 
-[[dependencies.terrablender]]
+[[dependencies.atumblender]]
     modId="forge"
     mandatory=true
     versionRange="[45.0.9,)"
