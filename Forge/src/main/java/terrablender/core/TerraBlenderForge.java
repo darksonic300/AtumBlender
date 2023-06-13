@@ -17,13 +17,19 @@
  */
 package terrablender.core;
 
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLPaths;
+import terrablender.api.Regions;
+import terrablender.api.SurfaceRuleManager;
 import terrablender.config.TerraBlenderConfig;
+import terrablender.example.TestRegion1;
+import terrablender.example.TestRegion2;
+import terrablender.example.TestSurfaceRuleData;
 
 @Mod(value = TerraBlender.MOD_ID)
 public class TerraBlenderForge {
@@ -36,7 +42,17 @@ public class TerraBlenderForge {
         TerraBlender.setConfig(CONFIG);
     }
 
-    private void commonSetup(final FMLCommonSetupEvent event) {
+    private void commonSetup(final FMLCommonSetupEvent event)
+    {
+        event.enqueueWork(() ->
+        {
+            // Weights are kept intentionally low as we add minimal biomes
+            Regions.register(new TestRegion1(new ResourceLocation(TerraBlender.MOD_ID, "aether_1"), 2));
+            Regions.register(new TestRegion2(new ResourceLocation(TerraBlender.MOD_ID, "aether_2"), 2));
+
+            // Register our surface rules
+            SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.AETHER, TerraBlender.MOD_ID, TestSurfaceRuleData.makeRules());
+        });
     }
 
     private void loadComplete(final FMLLoadCompleteEvent event) {

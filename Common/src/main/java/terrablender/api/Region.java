@@ -17,7 +17,6 @@
  */
 package terrablender.api;
 
-import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
@@ -26,9 +25,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Climate;
 import terrablender.core.TerraBlender;
-import terrablender.worldgen.RegionUtils;
 
-import java.util.List;
 import java.util.function.Consumer;
 
 /**
@@ -130,29 +127,4 @@ public abstract class Region
     {
         mapper.accept(Pair.of(parameters, biome));
     }
-
-    /**
-     * Adds a biome using climate parameters similar to those of a given Vanilla biome.
-     * @param mapper the mapper used to construct a list of {@link Climate.ParameterPoint ParameterPoint} to biome mappings.
-     * @param similarVanillaBiome the Vanilla biome that is similar to the one to be added.
-     * @param biome the biome to be added.
-     */
-    protected final void addBiomeSimilar(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> mapper, ResourceKey<Biome> similarVanillaBiome, ResourceKey<Biome> biome)
-    {
-        List<Climate.ParameterPoint> points = RegionUtils.getVanillaParameterPoints(similarVanillaBiome).stream().collect(ImmutableList.toImmutableList());
-        points.forEach(point -> addBiome(mapper, point, biome));
-    }
-
-    /**
-     * Adds all Vanilla overworld biomes with any modifications made.
-     * @param mapper the mapper used to construct a list of {@link Climate.ParameterPoint ParameterPoint} to biome mappings.
-     * @param onModify a consumer which can be used to modify the Vanilla overworld parameters.
-     */
-    protected final void addModifiedVanillaAetherBiomes(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> mapper, Consumer<ModifiedVanillaAetherBuilder> onModify)
-    {
-        ModifiedVanillaAetherBuilder builder = new ModifiedVanillaAetherBuilder();
-        onModify.accept(builder);
-        builder.build().forEach(mapper::accept);
-    }
-
 }
