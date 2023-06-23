@@ -1,4 +1,4 @@
-version = "${minecraft_version}-${mod_version}.${System.getenv().BUILD_NUMBER}"
+version = "${minecraft_version}-${mod_version}"
 
 subprojects {
     apply plugin: 'java'
