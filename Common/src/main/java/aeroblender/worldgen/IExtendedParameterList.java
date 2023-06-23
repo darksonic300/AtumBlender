@@ -23,7 +23,7 @@ import aeroblender.api.RegionType;
 
 public interface IExtendedParameterList<T>
 {
-    void initializeForAtumBlender(RegistryAccess registryAccess, RegionType regionType, long seed);
+    void initializeForAeroBlender(RegistryAccess registryAccess, RegionType regionType, long seed);
     T findValuePositional(Climate.TargetPoint target, int x, int y, int z);
     int getUniqueness(int x, int y, int z);
     Climate.RTree getTree(int uniqueness);

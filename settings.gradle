@@ -8,5 +8,5 @@ pluginManagement {
     }
 }
 
-rootProject.name = 'TerraBlender'
+rootProject.name = 'AeroBlender'
 include("Common", "Forge")

@@ -96,7 +96,7 @@ public class LevelUtils
         IExtendedParameterList parametersEx = (IExtendedParameterList)parameters;
 
         // Initialize the parameter list for TerraBlender
-        parametersEx.initializeForAtumBlender(registryAccess, regionType, seed);
+        parametersEx.initializeForAeroBlender(registryAccess, regionType, seed);
 
         // Append modded biomes to the biome source biome list
         Registry<Biome> biomeRegistry = registryAccess.registryOrThrow(Registries.BIOME);

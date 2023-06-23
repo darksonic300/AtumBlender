@@ -32,7 +32,7 @@ public class AeroBlenderConfig extends ConfigFile
         this.addSubConfig("General settings", "general", generalConfig);
 
         Config generationSettings = this.getSubConfig("generation_settings");
-        this.aetherRegionSize = generationSettings.addNumber("The size of aether biome regions from each mod that uses AtumBlender.", "aether_region_size", 2, 2, 6);
+        this.aetherRegionSize = generationSettings.addNumber("The size of aether biome regions from each mod that uses AeroBlender.", "aether_region_size", 2, 2, 6);
         this.vanillaAetherRegionWeight = generationSettings.addNumber("The weighting of vanilla biome regions in the aether.", "vanilla_aether_region_weight", 10, 0, Integer.MAX_VALUE);
         this.addSubConfig("Generation settings", "generation_settings", generationSettings);
 

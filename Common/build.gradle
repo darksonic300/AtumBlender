@@ -27,6 +27,7 @@ archivesBaseName = "${mod_name}-common-${minecraft_version}"
 
 
 minecraft {
+    accessWideners(project.file("src/main/resources/aeroblender.accesswidener"))
     version(minecraft_version)
     runs {
         if (project.hasProperty('common_runs_enabled') ? project.findProperty('common_runs_enabled').toBoolean() : true) {

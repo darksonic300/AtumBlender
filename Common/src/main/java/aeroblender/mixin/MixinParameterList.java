@@ -53,7 +53,7 @@ public abstract class MixinParameterList<T> implements IExtendedParameterList<T>
     private Climate.RTree[] uniqueTrees;
 
     @Override
-    public void initializeForAtumBlender(RegistryAccess registryAccess, RegionType regionType, long seed)
+    public void initializeForAeroBlender(RegistryAccess registryAccess, RegionType regionType, long seed)
     {
         // We don't want to initialize multiple times
         if (this.initialized)
