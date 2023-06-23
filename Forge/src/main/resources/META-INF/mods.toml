@@ -1,18 +1,17 @@
 modLoader="javafml"
 license="LGPLv3"
 loaderVersion="[45,)"
-issueTrackerURL="https://github.com/darksonic300/AtumBlender"
-displayURL="https://github.com/darksonic300/AtumBlender"
-logoFile="tb_logo.png"
+issueTrackerURL="https://github.com/darksonic300/AeroBlender"
+displayURL="https://github.com/darksonic300/AeroBlender"
 
 [[mods]]
-    modId="atumblender"
+    modId="aeroblender"
     version="${file.jarVersion}"
-    displayName="AtumBlender"
+    displayName="AeroBlender"
 	authors="RazorDevs"
     description="A library mod for adding biomes in a simple and compatible manner with Aether's biome/terrain system."
 
-[[dependencies.atumblender]]
+[[dependencies.aeroblender]]
     modId="forge"
     mandatory=true
     versionRange="[45.0.9,)"

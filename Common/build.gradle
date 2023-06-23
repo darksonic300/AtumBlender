@@ -27,7 +27,6 @@ archivesBaseName = "${mod_name}-common-${minecraft_version}"
 
 
 minecraft {
-    accessWideners(project.file("src/main/resources/atumblender.accesswidener"))
     version(minecraft_version)
     runs {
         if (project.hasProperty('common_runs_enabled') ? project.findProperty('common_runs_enabled').toBoolean() : true) {
@@ -82,4 +81,9 @@ processResources {
     filesMatching(['pack.mcmeta']) {
         expand buildProps
     }
+}
+
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
 }
