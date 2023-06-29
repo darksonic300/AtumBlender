@@ -9,4 +9,4 @@ pluginManagement {
 }
 
 rootProject.name = 'AeroBlender'
-include("Common", "Forge")
+include("Forge")

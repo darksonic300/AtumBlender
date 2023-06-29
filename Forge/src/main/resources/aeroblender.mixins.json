@@ -1,0 +1,21 @@
+{
+  "required": true,
+  "package": "aeroblender.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "aeroblender.refmap.json",
+  "mixins": [
+    "MixinBiomeSource",
+    "MixinBuiltInRegistries",
+    "MixinMultiNoiseBiomeSource",
+    "MixinNoiseGeneratorSettings",
+    "MixinParameterList",
+    "MixinPrimaryLevelData"
+  ],
+  "client": [
+    "MixinWorldOpenFlows"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "minVersion": "0.8.4"
+}

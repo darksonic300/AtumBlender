@@ -41,26 +41,24 @@ minecraft {
     runs {
         client {
             workingDirectory project.file('run')
-            args "-mixin.config=${mod_id}.mixins.json", "-mixin.config=${mod_id}_forge.mixins.json"
+            args "-mixin.config=${mod_id}.mixins.json"
             ideaModule "${rootProject.name}.${project.name}.main"
             taskName 'Client'
             mods {
                 modClientRun {
                     source sourceSets.main
-                    source project(":Common").sourceSets.main
                 }
             }
         }
 
         server {
             workingDirectory project.file('run')
-            args "-mixin.config=${mod_id}.mixins.json", "-mixin.config=${mod_id}_forge.mixins.json"
+            args "-mixin.config=${mod_id}.mixins.json"
             ideaModule "${rootProject.name}.${project.name}.main"
             taskName 'Server'
             mods {
                 modServerRun {
                     source sourceSets.main
-                    source project(":Common").sourceSets.main
                 }
             }
         }
@@ -68,12 +66,11 @@ minecraft {
         data {
             workingDirectory project.file('run')
             ideaModule "${rootProject.name}.${project.name}.main"
-            args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/'), "-mixin.config=${mod_id}.mixins.json", "-mixin.config=${mod_id}_forge.mixins.json"
+            args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/'), "-mixin.config=${mod_id}.mixins.json"
             taskName 'Data'
             mods {
                 modDataRun {
                     source sourceSets.main
-                    source project(":Common").sourceSets.main
                 }
             }
         }
@@ -105,7 +102,6 @@ repositories {
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
-    compileOnly project(":Common")
     compileOnly fg.deobf("com.aetherteam.aether:aether:1.19.4-1.0.0-beta.4-forge")
     runtimeOnly fg.deobf("com.aetherteam.aether:aether:1.19.4-1.0.0-beta.4-forge")
     runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.19.4-5.1.5.3")
@@ -115,24 +111,22 @@ dependencies {
 mixin {
     add sourceSets.main, "${mod_id}.refmap.json"
     config "${mod_id}.mixins.json"
-    config "${mod_id}_forge.mixins.json"
 }
 
-tasks.withType(JavaCompile) {
-    source(project(":Common").sourceSets.main.allSource)
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
 }
+
 
 processResources {
-    from project(":Common").sourceSets.main.resources
-
-    filesMatching("${mod_id}.mixins.json") {
-        expand "refmap_target": "${mod_id}."
-    }
-
     def buildProps = project.properties.clone()
 
     filesMatching(['pack.mcmeta']) {
         expand buildProps
+    }
+
+    filesMatching("${mod_id}.mixins.json") {
+        expand "refmap_target": "${mod_id}."
     }
 }
 
