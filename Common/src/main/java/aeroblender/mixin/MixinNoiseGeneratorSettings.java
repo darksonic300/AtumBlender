@@ -28,7 +28,7 @@ import aeroblender.api.RegionType;
 import aeroblender.api.SurfaceRuleManager;
 import aeroblender.worldgen.IExtendedNoiseGeneratorSettings;
 
-@Mixin(value = NoiseGeneratorSettings.class, remap = false)
+@Mixin(NoiseGeneratorSettings.class)
 public class MixinNoiseGeneratorSettings implements IExtendedNoiseGeneratorSettings
 {
     @Shadow

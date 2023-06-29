@@ -28,7 +28,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import aeroblender.worldgen.IExtendedParameterList;
 
-@Mixin(value = MultiNoiseBiomeSource.class, remap = false)
+@Mixin(MultiNoiseBiomeSource.class)
 public abstract class MixinMultiNoiseBiomeSource
 {
     @Shadow

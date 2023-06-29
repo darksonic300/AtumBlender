@@ -16,10 +16,16 @@ buildscript {
 }
 
 plugins {
-    id 'java'
-    id 'org.spongepowered.gradle.vanilla' version '0.2.1-SNAPSHOT'
+    id "com.matthewprenger.cursegradle" version "1.4.0"
+    id "com.modrinth.minotaur" version "2.7.+"
+    id 'maven-publish'
+    id 'net.minecraftforge.gradle' version '5.1.+'
 }
 
+apply plugin: 'java'
+apply plugin: 'net.minecraftforge.gradle'
+apply plugin: 'maven-publish'
+apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'io.github.0ffz.github-packages'
 
 
@@ -27,7 +33,7 @@ archivesBaseName = "${mod_name}-common-${minecraft_version}"
 
 
 minecraft {
-    accessWideners(project.file("src/main/resources/aeroblender.accesswidener"))
+    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
     version(minecraft_version)
     runs {
         if (project.hasProperty('common_runs_enabled') ? project.findProperty('common_runs_enabled').toBoolean() : true) {
@@ -65,13 +71,14 @@ repositories {
 }
 
 dependencies {
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
     compileOnly group:'org.spongepowered', name: 'mixin', version: '0.8.5'
     compileOnly group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
     compileOnly("com.electronwill.night-config:toml:${nightconfig_version}")
     compileOnly("com.electronwill.night-config:core:${nightconfig_version}")
-    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
-    compileOnly "com.aetherteam.aether:aether:1.19.4-1.0.0-beta.4-forge"
-    runtimeOnly ("com.aetherteam.aether:aether:1.19.4-1.0.0-beta.4-forge")
+    //compileOnly "com.aetherteam.aether:aether:1.19.4-1.0.0-beta.4-forge"
+    //runtimeOnly ("com.aetherteam.aether:aether:1.19.4-1.0.0-beta.4-forge")
+    implementation fg.deobf("com.aetherteam.aether:aether:1.19.4-1.0.0-beta.4-forge")
     runtimeOnly ("top.theillusivec4.curios:curios-forge:1.19.4-5.1.5.3")
     compileOnly ("top.theillusivec4.curios:curios-forge:1.19.4-5.1.5.3:api")
 }

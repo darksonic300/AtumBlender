@@ -17,6 +17,7 @@
  */
 package aeroblender.api;
 
+import com.aetherteam.aether.data.resources.builders.AetherNoiseBuilders;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
@@ -88,7 +89,7 @@ public class SurfaceRuleManager
     public static SurfaceRules.RuleSource getNamespacedRules(RuleCategory category, SurfaceRules.RuleSource fallback)
     {
         ImmutableMap.Builder<String, SurfaceRules.RuleSource> builder = ImmutableMap.builder();
-        builder.put("minecraft", getDefaultSurfaceRules(category));
+        builder.put("aether", getDefaultSurfaceRules(category));
         builder.putAll(surfaceRules.get(category));
         return new NamespacedSurfaceRuleSource(fallback, builder.build());
     }
@@ -115,6 +116,7 @@ public class SurfaceRuleManager
             return defaultSurfaceRules.get(category);
 
         return TBSurfaceRuleData.aether();
+        //return AetherNoiseBuilders.aetherSurfaceRules();
     }
 
     /**

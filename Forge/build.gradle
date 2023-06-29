@@ -104,11 +104,10 @@ repositories {
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-    compileOnly project(":Common")
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+    compileOnly project(":Common")
     compileOnly fg.deobf("com.aetherteam.aether:aether:1.19.4-1.0.0-beta.4-forge")
     runtimeOnly fg.deobf("com.aetherteam.aether:aether:1.19.4-1.0.0-beta.4-forge")
-    implementation fg.deobf("com.aetherteam.aether:aether:1.19.4-1.0.0-beta.4-forge")
     runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.19.4-5.1.5.3")
     compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.19.4-5.1.5.3:api")
 }
@@ -129,6 +128,12 @@ processResources {
     filesMatching("${mod_id}.mixins.json") {
         expand "refmap_target": "${mod_id}."
     }
+
+    def buildProps = project.properties.clone()
+
+    filesMatching(['pack.mcmeta']) {
+        expand buildProps
+    }
 }
 
 jar.finalizedBy('reobfJar')
@@ -145,3 +150,6 @@ publishing {
         }
     }
 }
+
+
+

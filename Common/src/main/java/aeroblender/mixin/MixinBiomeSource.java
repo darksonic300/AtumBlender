@@ -31,7 +31,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.function.Supplier;
 
-@Mixin(value = BiomeSource.class, remap = false)
+@Mixin(BiomeSource.class)
 public abstract class MixinBiomeSource implements BiomeResolver, IExtendedBiomeSource
 {
     @Shadow

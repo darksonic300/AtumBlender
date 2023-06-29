@@ -31,7 +31,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import aeroblender.core.AeroBlender;
 import aeroblender.worldgen.surface.NamespacedSurfaceRuleSource;
 
-@Mixin(value = BuiltInRegistries.class, remap = false)
+@Mixin(BuiltInRegistries.class)
 public abstract class MixinBuiltInRegistries
 {
     @Shadow
