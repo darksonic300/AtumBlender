@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import teamrazor.aeroblender.AeroBlenderConfig;
-import teamrazor.aeroblender.AetherRegionType;
+import teamrazor.aeroblender.aether.AetherRegionType;
 import terrablender.api.RegionType;
 import terrablender.worldgen.noise.*;
 

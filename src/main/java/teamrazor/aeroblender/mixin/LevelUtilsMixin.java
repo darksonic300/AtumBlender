@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import teamrazor.aeroblender.AetherRegionType;
+import teamrazor.aeroblender.aether.AetherRegionType;
 import teamrazor.aeroblender.DimensionTypeTags;
 import terrablender.api.RegionType;
 import terrablender.util.LevelUtils;

@@ -1,4 +1,4 @@
-package teamrazor.aeroblender;
+package teamrazor.aeroblender.aether;
 
 
 import terrablender.api.RegionType;

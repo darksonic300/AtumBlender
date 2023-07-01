@@ -15,7 +15,7 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-package teamrazor.aeroblender;
+package teamrazor.aeroblender.aether;
 
 import com.aetherteam.aether.block.AetherBlockStateProperties;
 import com.aetherteam.aether.block.AetherBlocks;
@@ -28,6 +28,7 @@ import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import terrablender.api.SurfaceRuleManager;
 
+//Default SurfaceRules of Aether
 public class AetherSurfaceRuleData {
     private static final SurfaceRules.RuleSource GRASS_BLOCK = makeStateRule(AetherBlocks.AETHER_GRASS_BLOCK.get());
     private static final SurfaceRules.RuleSource DIRT = makeStateRule(AetherBlocks.AETHER_DIRT.get());
@@ -38,13 +39,6 @@ public class AetherSurfaceRuleData {
 
     public static SurfaceRules.RuleSource aether() {
          SurfaceRules.RuleSource surface = SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.waterBlockCheck(-1, 0), GRASS_BLOCK), DIRT);
-         SurfaceRules.RuleSource ruleSource = SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, surface), SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR, DIRT));
-
-        ImmutableList.Builder<SurfaceRules.RuleSource> builder = ImmutableList.builder();
-        builder.addAll(SurfaceRuleManager.getDefaultSurfaceRuleAdditionsForStage(SurfaceRuleManager.RuleCategory.NETHER, SurfaceRuleManager.RuleStage.AFTER_BEDROCK));
-        builder.add(ruleSource);
-
-        return SurfaceRules.sequence(builder.build().toArray(SurfaceRules.RuleSource[]::new));
-
+         return SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, surface), SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR, DIRT));
     }
 }

@@ -9,10 +9,9 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import teamrazor.aeroblender.Aeroblender;
-import teamrazor.aeroblender.AetherRegionType;
-import teamrazor.aeroblender.AetherRuleCategory;
+import teamrazor.aeroblender.aether.AetherRegionType;
+import teamrazor.aeroblender.aether.AetherRuleCategory;
 import terrablender.api.RegionType;
-import terrablender.api.SurfaceRuleManager;
 import terrablender.worldgen.IExtendedNoiseGeneratorSettings;
 
 @Mixin(value = NoiseGeneratorSettings.class, priority = 900)
