@@ -1,4 +1,10 @@
 1.19.x Changelog
+45.1
+====
+ - 45.1.2 Add proper duplicate mod error message that includes the mod id(s) and mod files. (#9474)
+ - 45.1.1 Make 1.20.x the main TC branch.
+ - 45.1.0 1.19.4 Recommended Build
+
 45.0
 ====
  - 45.0.66 Add method to GatherDataEvent to obtain collection of all input paths. (#9499)
