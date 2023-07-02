@@ -70,9 +70,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mollis lacinia magn
     side="BOTH"
 
 [[dependencies.aeroblender]]
-modId="terrablender"
-mandatory=true
+    modId="terrablender"
+    mandatory=true
 # This version range declares a minimum of the current minecraft version up to but not including the next major version
-versionRange="[1.19.4-2.2.0.161,)"
-ordering="NONE"
-side="BOTH"
+    versionRange="[2.2.0.161,)"
+    ordering="NONE"
+    side="BOTH"
