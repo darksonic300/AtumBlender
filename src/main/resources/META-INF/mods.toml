@@ -76,3 +76,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mollis lacinia magn
     versionRange="[2.2.0.161,)"
     ordering="NONE"
     side="BOTH"
+
+[[dependencies.aeroblender]]
+modId="aether"
+mandatory=true
+# This version range declares a minimum of the current minecraft version up to but not including the next major version
+versionRange="[0,)"
+ordering="AFTER"
+side="BOTH"

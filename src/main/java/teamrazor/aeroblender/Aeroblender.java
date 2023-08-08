@@ -54,13 +54,4 @@ public class Aeroblender
        System.out.println(builder);
        return new NamespacedSurfaceRuleSource(fallback, builder.build());
    }
-
-
-   private static SurfaceRules.RuleSource getDefaultAetherSurfaceRules(SurfaceRuleManager.RuleCategory category) {
-       if (SurfaceRuleManagerAccessor.getDefaultSurfaceRules().containsKey(category))
-           return SurfaceRuleManagerAccessor.getDefaultSurfaceRules().get(category);
-
-       return AetherSurfaceRuleData.aether();
-
-   }
 }
