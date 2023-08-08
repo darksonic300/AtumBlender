@@ -11,7 +11,8 @@
     "RegionMixin",
     "RegionTypeMixin",
     "RuleCategoryMixin",
-    "SurfaceRuleManagerAccessor"
+    "SurfaceRuleManagerAccessor",
+    "SurfaceRuleManagerMixin"
   ],
   "client": [
   ],

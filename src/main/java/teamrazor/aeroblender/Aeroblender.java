@@ -25,9 +25,7 @@ import java.util.Arrays;
 public class Aeroblender
 {
     private static final AeroBlenderConfig CONFIG = new AeroBlenderConfig(FMLPaths.CONFIGDIR.get().resolve(Aeroblender.MODID + ".toml"));
-
     public static final String MODID = "aeroblender";
-    private static final Logger LOGGER = LogUtils.getLogger();
     public Aeroblender()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();

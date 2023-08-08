@@ -40,5 +40,12 @@ public class AetherSurfaceRuleData {
     public static SurfaceRules.RuleSource aether() {
          SurfaceRules.RuleSource surface = SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.waterBlockCheck(-1, 0), AETHER_GRASS_BLOCK), AETHER_DIRT);
          return SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, surface), SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR, AETHER_DIRT));
+
+         /*
+        ImmutableList.Builder<SurfaceRules.RuleSource> builder = ImmutableList.builder();
+
+        builder.addAll(SurfaceRuleManager.getDefaultSurfaceRuleAdditionsForStage(AetherRuleCategory.THE_AETHER, SurfaceRuleManager.RuleStage.AFTER_BEDROCK));
+        builder.add(a);
+        return SurfaceRules.sequence(builder.build().toArray(SurfaceRules.RuleSource[]::new));*/
     }
 }
