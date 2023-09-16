@@ -114,18 +114,21 @@ repositories {
     maven {
         url = "https://maven.theillusivec4.top/"
     }
+    flatDir {
+        dir 'libs'
+    }
 }
 
 dependencies {
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
-    minecraft 'net.minecraftforge:forge:1.19.4-45.1.2'
+    minecraft 'net.minecraftforge:forge:1.19.2-43.2.23'
 
-    compileOnly "com.aetherteam.aether:aether:1.19.4-1.0.0-beta.4-forge"
-    runtimeOnly fg.deobf("com.aetherteam.aether:aether:1.19.4-1.0.0-beta.4-forge")
-    implementation fg.deobf('com.github.glitchfiend:TerraBlender-forge:1.19.4-2.2.0.161')
+    compileOnly "local:aether:1.19.2-1.0.0-beta.6-forge"
+    runtimeOnly fg.deobf("local:aether:1.19.2-1.0.0-beta.6-forge")
+    implementation fg.deobf('com.github.glitchfiend:TerraBlender-forge:1.19.2-2.0.1.166')
 
-    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.19.4-5.1.5.1")
-    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.19.4-5.1.5.1:api")
+    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.19.2-5.1.4.1")
+    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.19.2-5.1.4.1:api")
 }
 
 mixin {
