@@ -16,9 +16,9 @@ version="${file.jarVersion}"
 displayName="AeroBlender"
 logoFile="aeroblender.png"
 credits="Credits goes to the terrablender team"
-authors="TunefulTurnip, Darksonic300"
+authors="RazorDevs"
 description='''
-AeroBlender is a library mod for adding biomes in a simple and compatible manner with Aether's biome/terrain system.
+AeroBlender is a library mod for adding biomes in a simple and compatible manner with Aether's biome/terrain system, using Terrablender.
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.aeroblender]] #optional
