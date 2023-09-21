@@ -6,7 +6,7 @@ plugins {
     id 'org.spongepowered.mixin' version '[0.7,0.8)'
 }
 
-version = "${minecraft_version}-${mod_version}-neoforge"
+version = "r${minecraft_version}-${mod_version}-neoforge"
 group = 'teamrazor.aeroblender'
 
 archivesBaseName = project.mod_id
