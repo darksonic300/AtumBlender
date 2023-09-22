@@ -120,8 +120,8 @@ dependencies {
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
     minecraft 'net.minecraftforge:forge:1.19.4-45.1.2'
 
-    compileOnly "com.aetherteam.aether:aether:1.19.4-1.0.0-beta.4-forge"
-    runtimeOnly fg.deobf("com.aetherteam.aether:aether:1.19.4-1.0.0-beta.4-forge")
+    compileOnly "com.aetherteam.aether:aether:1.19.4-1.0.0-beta.6.2-forge"
+    runtimeOnly fg.deobf("com.aetherteam.aether:aether:1.19.4-1.0.0-beta.6.2-forge")
     implementation fg.deobf('com.github.glitchfiend:TerraBlender-forge:1.19.4-2.2.0.161')
 
     runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:1.19.4-5.1.5.1")
@@ -137,11 +137,11 @@ jar {
     manifest {
         attributes([
                 "Specification-Title"     : "aeroblender",
-                "Specification-Vendor"    : "aeroblendersareus",
+                "Specification-Vendor"    : "razordevs",
                 "Specification-Version"   : "1", // We are version 1 of ourselves
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.jar.archiveVersion,
-                "Implementation-Vendor"   : "aeroblendersareus",
+                "Implementation-Vendor"   : "razordevs",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
