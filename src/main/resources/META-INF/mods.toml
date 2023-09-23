@@ -9,12 +9,6 @@ modId="aeroblender"
 version="${file.jarVersion}"
 displayName="AeroBlender"
 logoFile="aeroblender.png"
-
-[[mods]]
-modId="aeroblender"
-version="${file.jarVersion}"
-displayName="AeroBlender"
-logoFile="aeroblender.png"
 credits="Credits goes to the terrablender team"
 authors="RazorDevs"
 description='''
