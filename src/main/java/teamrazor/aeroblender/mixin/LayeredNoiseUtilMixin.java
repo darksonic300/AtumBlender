@@ -22,7 +22,7 @@ public abstract class LayeredNoiseUtilMixin {
     @Inject(at = @At("HEAD"), method = "uniqueness", cancellable = true)
     private static void uniqueness(RegistryAccess registryAccess, RegionType regionType, long worldSeed, CallbackInfoReturnable<Area> cir) {
         if(regionType == AetherRegionType.THE_AETHER) {
-            int numZooms1 = AeroBlenderConfig.CONFIG.aetherRegionSize;
+            int numZooms1 = AeroBlenderConfig.COMMON.aetherRegionSize.get();
 
             LongFunction<AreaContext> contextFactory = (seedModifier) -> new AreaContext(25, worldSeed, seedModifier);
             AreaFactory factory = new InitialLayer(registryAccess, regionType).run(contextFactory.apply(1L));
