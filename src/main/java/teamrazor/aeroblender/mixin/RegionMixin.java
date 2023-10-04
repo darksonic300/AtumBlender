@@ -11,6 +11,6 @@ import static terrablender.api.Regions.register;
 @Mixin(value = Regions.class, remap = false)
 public abstract class RegionMixin {
     static {
-        register(new DefaultAetherRegion(AeroBlenderConfig.CONFIG.vanillaAetherRegionWeight));
+        register(new DefaultAetherRegion(AeroBlenderConfig.COMMON.vanillaAetherRegionWeight.get()));
     }
 }
