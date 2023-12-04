@@ -32,21 +32,7 @@ public class Aeroblender
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, AeroBlenderConfig.COMMON_SPEC);
-
-
     }
-
-    private void commonSetup(final FMLCommonSetupEvent event)
-    {
-        System.out.println(AetherRegionType.THE_AETHER);
-        System.out.println(Arrays.toString(RegionType.values()));
-        System.out.println(RegionType.valueOf("THE_AETHER"));
-
-        System.out.println(AetherRuleCategory.THE_AETHER);
-        System.out.println(Arrays.toString(SurfaceRuleManager.RuleCategory.values()));
-        System.out.println(SurfaceRuleManager.RuleCategory.valueOf("THE_AETHER"));
-    }
-
 
    public static SurfaceRules.RuleSource getAetherNamespacedRules(SurfaceRuleManager.RuleCategory category, SurfaceRules.RuleSource fallback) {
        ImmutableMap.Builder<String, SurfaceRules.RuleSource> builder = ImmutableMap.builder();
