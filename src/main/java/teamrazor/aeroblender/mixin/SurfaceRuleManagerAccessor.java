@@ -7,7 +7,7 @@ import terrablender.api.SurfaceRuleManager;
 
 import java.util.Map;
 
-@Mixin(SurfaceRuleManager.class)
+@Mixin(value = SurfaceRuleManager.class, remap = false)
 public interface SurfaceRuleManagerAccessor {
     @Accessor
     static Map<SurfaceRuleManager.RuleCategory, Map<String, SurfaceRules.RuleSource>> getSurfaceRules() {
