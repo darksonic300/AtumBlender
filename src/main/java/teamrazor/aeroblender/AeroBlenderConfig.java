@@ -35,7 +35,7 @@ public class AeroBlenderConfig {
             aetherRegionSize = builder
                     .comment("The size of aether biome regions from each mod that uses AeroBlender.")
                     .translation("aether_region_size")
-                    .define("Aether Region Size", 2);
+                    .define("Aether Region Size", 3);
             builder.pop();
 
             builder.push("general");
