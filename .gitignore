@@ -12,6 +12,7 @@ out
 *.iws
 *.iml
 .idea
+.idea/modules
 
 # gradle
 build
