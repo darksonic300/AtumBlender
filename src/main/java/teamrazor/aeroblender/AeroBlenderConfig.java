@@ -1,35 +1,14 @@
-/**
- * Copyright (C) Glitchfiend
- *
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 3 of the License, or (at your option) any later version.
- * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- * 
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
- */
 package teamrazor.aeroblender;
 
-import net.minecraftforge.common.ForgeConfigSpec;
+import net.neoforged.neoforge.common.ModConfigSpec;
 import org.apache.commons.lang3.tuple.Pair;
-import terrablender.config.Config;
-import terrablender.config.ConfigFile;
-
-import java.nio.file.Path;
 
 public class AeroBlenderConfig {
     public static class Common {
-        public final ForgeConfigSpec.ConfigValue<Integer> aetherRegionSize;
-        public final ForgeConfigSpec.ConfigValue<Integer> vanillaAetherRegionWeight;
+        public final ModConfigSpec.ConfigValue<Integer> aetherRegionSize;
+        public final ModConfigSpec.ConfigValue<Integer> vanillaAetherRegionWeight;
 
-        public Common(ForgeConfigSpec.Builder builder) {
+        public Common(ModConfigSpec.Builder builder) {
 
             builder.push("general");
             aetherRegionSize = builder
@@ -52,11 +31,11 @@ public class AeroBlenderConfig {
             CONFIG = config;
         }
     }
-    public static final ForgeConfigSpec COMMON_SPEC;
+    public static final ModConfigSpec COMMON_SPEC;
     public static final Common COMMON;
 
     static {
-        final Pair<Common, ForgeConfigSpec> commonSpecPair = new ForgeConfigSpec.Builder().configure(Common::new);
+        final Pair<Common, ModConfigSpec> commonSpecPair = new ModConfigSpec.Builder().configure(Common::new);
         COMMON_SPEC = commonSpecPair.getRight();
         COMMON = commonSpecPair.getLeft();
     }

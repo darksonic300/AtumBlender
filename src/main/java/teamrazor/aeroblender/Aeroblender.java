@@ -1,35 +1,23 @@
 package teamrazor.aeroblender;
 
 import com.google.common.collect.ImmutableMap;
-import com.mojang.logging.LogUtils;
 import net.minecraft.world.level.levelgen.SurfaceRules;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.fml.loading.FMLPaths;
-import org.slf4j.Logger;
-import teamrazor.aeroblender.aether.AetherRegionType;
-import teamrazor.aeroblender.aether.AetherRuleCategory;
-import teamrazor.aeroblender.aether.AetherSurfaceRuleData;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModLoadingContext;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.neoforge.common.NeoForge;
 import teamrazor.aeroblender.mixin.SurfaceRuleManagerAccessor;
-import terrablender.api.RegionType;
 import terrablender.api.SurfaceRuleManager;
 import terrablender.worldgen.surface.NamespacedSurfaceRuleSource;
-
-import java.util.Arrays;
-
-// The value here should match an entry in the META-INF/mods.toml file
 @Mod(Aeroblender.MODID)
 public class Aeroblender
 { public static final String MODID = "aeroblender";
     public Aeroblender()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        MinecraftForge.EVENT_BUS.register(this);
+        //NeoForge.EVENT_BUS.register(this);
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, AeroBlenderConfig.COMMON_SPEC);
     }
 
