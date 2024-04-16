@@ -7,10 +7,10 @@ import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.neoforged.neoforge.common.NeoForge;
 import teamrazor.aeroblender.mixin.SurfaceRuleManagerAccessor;
 import terrablender.api.SurfaceRuleManager;
 import terrablender.worldgen.surface.NamespacedSurfaceRuleSource;
+
 @Mod(Aeroblender.MODID)
 public class Aeroblender
 { public static final String MODID = "aeroblender";

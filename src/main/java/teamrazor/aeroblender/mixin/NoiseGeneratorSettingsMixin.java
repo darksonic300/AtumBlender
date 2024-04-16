@@ -15,7 +15,7 @@ import terrablender.api.RegionType;
 import terrablender.worldgen.IExtendedNoiseGeneratorSettings;
 
 @Mixin(value = NoiseGeneratorSettings.class, priority = 900)
-public class NoiseGeneratorSettingsMixin implements IExtendedNoiseGeneratorSettings {
+public abstract class NoiseGeneratorSettingsMixin implements IExtendedNoiseGeneratorSettings {
 
     @Shadow
     private SurfaceRules.RuleSource surfaceRule;
