@@ -1,10 +1,11 @@
+
 plugins {
     id 'io.github.0ffz.github-packages' version '[1,2)'
     id 'java-library'
     id 'eclipse'
     id 'idea'
     id 'maven-publish'
-    id 'net.neoforged.gradle.userdev' version '7.0.57'
+    id 'net.neoforged.gradle.userdev' version '7.0.7'
 }
 
 version = "${minecraft_version}-${mod_version}-neoforge"
@@ -84,6 +85,31 @@ dependencies {
 
     implementation ("com.aetherteam.nitrogen:nitrogen_internals:${project.nitrogen_version}")
     implementation ("com.aetherteam.cumulus:cumulus_menus:${project.cumulus_version}")
+}
+
+tasks.named('jar', Jar).configure {
+    manifest {
+        attributes([
+                "Specification-Title"     : project.mod_name,
+                "Specification-Vendor"    : "RazorDevs",
+                "Specification-Version"   : "1", // We are version 1 of ourselves
+                "Implementation-Title"    : project.mod_name,
+                "Implementation-Version"  : project.jar.archiveVersion,
+                "Implementation-Vendor"   : "RazorDevs",
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+        ])
+    }
+    archiveClassifier = 'no-embeds'
+}
+
+compileJava {
+    options.incremental = false
+}
+
+tasks.register('sourceJar', Jar) {
+    dependsOn 'classes'
+    from sourceSets.main.allSource
+    archiveClassifier = 'sources'
 }
 
 publishing {
