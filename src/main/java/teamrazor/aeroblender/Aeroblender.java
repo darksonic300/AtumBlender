@@ -14,11 +14,10 @@ import terrablender.handler.InitializationHandler;
 import terrablender.worldgen.surface.NamespacedSurfaceRuleSource;
 
 @Mod(Aeroblender.MODID)
-public class Aeroblender
-{ public static final String MODID = "aeroblender";
+public class Aeroblender {
+    public static final String MODID = "aeroblender";
     public Aeroblender()
     {
-        NeoForge.EVENT_BUS.register(this);
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, AeroBlenderConfig.COMMON_SPEC);
     }
 
