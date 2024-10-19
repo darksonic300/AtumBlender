@@ -1,35 +1,37 @@
 
 plugins {
-    id 'io.github.0ffz.github-packages' version '[1,2)'
     id 'java-library'
     id 'eclipse'
     id 'idea'
     id 'maven-publish'
-    id 'net.neoforged.gradle.userdev' version '7.0.7'
+    id 'net.neoforged.gradle.userdev' version "${neogradle_version}"
+    id 'io.github.0ffz.github-packages' version '[1,2)'
+}
+
+
+tasks.named('wrapper', Wrapper).configure {
+    distributionType = Wrapper.DistributionType.BIN
 }
 
 version = "${minecraft_version}-${mod_version}-neoforge"
-group = 'teamrazor.aeroblender'
+group = mod_group
 
 base {
     archivesName = mod_id
 }
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
 minecraft.accessTransformers.file rootProject.file('src/main/resources/META-INF/accesstransformer.cfg')
 
 runs {
-    // applies to all the run configs below
     configureEach {
-        workingDirectory project.file('run')
-        systemProperty "${mod_id}.iside", 'true'
+        systemProperty 'forge.logging.markers', 'REGISTRIES'
         systemProperty  'forge.logging.console.level', 'info'
 
         modSource project.sourceSets.main
     }
 
     client {
-        // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
         systemProperty 'forge.enabledGameTestNamespaces', mod_id
     }
 
@@ -38,18 +40,11 @@ runs {
         programArgument '--nogui'
     }
 
-    // This run config launches GameTestServer and runs all registered gametests, then exits.
-    // By default, the server will crash when no gametests are provided.
-    // The gametest system is also enabled by default for other run configs under the /test command.
     gameTestServer {
-        systemProperty 'forge.enabledGameTestNamespaces', mod_id
+        systemProperty 'neoforge.enabledGameTestNamespaces', mod_id
     }
 
     data {
-        // example of overriding the workingDirectory set in configureEach above, uncomment if you want to use it
-        // workingDirectory project.file('run-data')
-
-        // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
         programArguments.addAll '--mod', mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
     }
 }
@@ -60,50 +55,69 @@ sourceSets.main.resources {
 
 repositories {
     maven githubPackage.invoke("The-Aether-Team/The-Aether")
-    maven { url = "https://maven.theillusivec4.top/" }
     maven githubPackage.invoke("The-Aether-Team/Nitrogen")
     maven githubPackage.invoke("The-Aether-Team/Cumulus")
     maven { url = 'https://maven.minecraftforge.net/' }
-    maven { url = "https://jitpack.io" }
     maven { url = "https://maven.blamejared.com" }
-    maven { url = "https://maven.theillusivec4.top/" }
-    maven { url = "https://www.cursemaven.com" }
-    maven { url = "https://gitlab.com/api/v4/projects/21830712/packages/maven" }
-    maven githubPackage.invoke("The-Aether-Team/Nitrogen")
-    maven githubPackage.invoke("The-Aether-Team/Cumulus")
-    maven { url "https://maven.shedaniel.me/" }
+    maven { url = "https://maven.wispforest.io" }
+    maven { url = "https://maven.wispforest.io/releases" }
+    maven { url = "https://maven.shedaniel.me/" }
+    maven { url 'https://maven.su5ed.dev/releases' }
+    maven { url 'https://maven.fabricmc.net' }
+
+    flatDir {
+        dir 'libs'
+    }
+    mavenLocal()
 }
 
 dependencies {
-    implementation "net.neoforged:neoforge:${neoforge_version}"
-
+    implementation "net.neoforged:neoforge:${neo_version}"
     implementation ("com.github.glitchfiend:TerraBlender-neoforge:${project.terrablender_version}")
-
-    implementation "top.theillusivec4.curios:curios-neoforge:${project.curios_version}+${project.minecraft_version}"
-
-    implementation ("com.aetherteam.aether:aether:${project.aether_version}")
-
+    implementation ("local:aether:${project.aether_version}")
     implementation ("com.aetherteam.nitrogen:nitrogen_internals:${project.nitrogen_version}")
     implementation ("com.aetherteam.cumulus:cumulus_menus:${project.cumulus_version}")
+    implementation "io.wispforest:accessories-neoforge:${project.accessories_version}+${project.minecraft_version}"
+
+    compileOnly "me.shedaniel.cloth:cloth-config-neoforge:${cloth_config_version}"
+    compileOnly "dev.architectury:architectury-neoforge:${architectury_version}"
+}
+
+
+tasks.withType(ProcessResources).configureEach {
+    var replaceProperties = [
+            mod_id                    : mod_id,
+            mod_name                  : mod_name,
+            mod_version               : mod_version,
+            mod_license               : mod_license,
+            mod_url                   : mod_url,
+            mod_update                : mod_update,
+            mod_tracker               : mod_tracker,
+            mod_credits               : mod_credits,
+            mod_authors               : mod_authors,
+            mod_description           : mod_description,
+            minecraft_version         : minecraft_version,
+            minecraft_version_range   : minecraft_version_range,
+            neo_version               : neo_version,
+            neo_version_range         : neo_version_range,
+            terrablender_version_range: terrablender_version_range,
+            aether_version_range      : aether_version_range,
+            loader_version_range      : loader_version_range
+    ]
+    inputs.properties replaceProperties
+
+    filesMatching(['META-INF/neoforge.mods.toml']) {
+        expand replaceProperties
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+    options.compilerArgs << "-Xmaxerrs" << "9000"
 }
 
 tasks.named('jar', Jar).configure {
-    manifest {
-        attributes([
-                "Specification-Title"     : mod_name,
-                "Specification-Vendor"    : "RazorDevs",
-                "Specification-Version"   : "1", // We are version 1 of ourselves
-                "Implementation-Title"    : mod_name,
-                "Implementation-Version"  : mod_version,
-                "Implementation-Vendor"   : "RazorDevs",
-                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
-        ])
-    }
     archiveClassifier = 'no-embeds'
-}
-
-compileJava {
-    options.incremental = false
 }
 
 tasks.register('sourceJar', Jar) {
@@ -122,5 +136,12 @@ publishing {
         maven {
             url "file://${project.projectDir}/repo"
         }
+    }
+}
+
+idea {
+    module {
+        downloadSources = true
+        downloadJavadoc = true
     }
 }

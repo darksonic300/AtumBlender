@@ -1,0 +1,10 @@
+{
+  "homepage": "https://modrinth.com/mod/aeroblenderc",
+  "promos": {
+    "1.19.2-recommended": "1.19.2-1.0.1",
+    "1.19.4-recommended": "r1.19.4-1.0",
+    "1.20.1-recommended": "r1.20.1-1.0.1-neoforge",
+    "1.20.4-recommended": "1.20.4-1.0.1",
+    "1.21.0-recommended": "1.21-1.0.1-neoforge"
+  }
+}

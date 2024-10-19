@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
@@ -16,9 +17,9 @@ import terrablender.worldgen.surface.NamespacedSurfaceRuleSource;
 @Mod(Aeroblender.MODID)
 public class Aeroblender {
     public static final String MODID = "aeroblender";
-    public Aeroblender()
+    public Aeroblender(IEventBus modEventBus, ModContainer modContainer)
     {
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, AeroBlenderConfig.COMMON_SPEC);
+        modContainer.registerConfig(ModConfig.Type.COMMON, AeroBlenderConfig.COMMON_SPEC);
     }
 
    public static SurfaceRules.RuleSource getAetherNamespacedRules(SurfaceRuleManager.RuleCategory category, SurfaceRules.RuleSource fallback) {

@@ -17,6 +17,7 @@
  */
 package teamrazor.aeroblender.aether;
 
+import com.aetherteam.aether.Aether;
 import com.aetherteam.aether.data.resources.registries.AetherBiomes;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.Registry;
@@ -30,7 +31,7 @@ import java.util.function.Consumer;
 
 public class DefaultAetherRegion extends Region
 {
-    public static final ResourceLocation LOCATION = new ResourceLocation("aether:the_aether");
+    public static final ResourceLocation LOCATION = ResourceLocation.fromNamespaceAndPath(Aether.MODID,"the_aether");
 
     public DefaultAetherRegion(int weight)
     {
