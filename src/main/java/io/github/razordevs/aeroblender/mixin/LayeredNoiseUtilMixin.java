@@ -1,6 +1,5 @@
 package io.github.razordevs.aeroblender.mixin;
 
-
 import io.github.razordevs.aeroblender.AeroBlenderConfig;
 import io.github.razordevs.aeroblender.aether.AetherRegionType;
 import net.minecraft.core.RegistryAccess;
@@ -11,7 +10,6 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import terrablender.api.RegionType;
 import terrablender.worldgen.noise.*;
-
 
 @Mixin(value = LayeredNoiseUtil.class, remap = false)
 public abstract class LayeredNoiseUtilMixin {

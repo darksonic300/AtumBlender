@@ -1,7 +1,5 @@
 package io.github.razordevs.aeroblender.aether;
 
-
-
 import terrablender.api.SurfaceRuleManager;
 
 //based on https://gist.github.com/LlamaLad7/0b553d5ae04e4eb44d3a1e8558be9151

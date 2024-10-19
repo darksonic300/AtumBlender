@@ -1,8 +1,5 @@
 package io.github.razordevs.aeroblender.mixin;
 
-
-
-
 import com.google.common.collect.ImmutableList;
 import io.github.razordevs.aeroblender.DimensionTypeTags;
 import io.github.razordevs.aeroblender.aether.AetherRegionType;
@@ -46,14 +43,14 @@ public class LevelUtilsMixin {
         return null;
     }
 
-    @Inject(at = @At("HEAD"), cancellable = true, method = "Lterrablender/util/LevelUtils;getRegionTypeForDimension(Lnet/minecraft/core/Holder;)Lterrablender/api/RegionType;")
+    @Inject(at = @At("HEAD"), cancellable = true, method = "getRegionTypeForDimension(Lnet/minecraft/core/Holder;)Lterrablender/api/RegionType;")
     private static void addAether(Holder<DimensionType> dimensionType, CallbackInfoReturnable<RegionType> cir) {
         if (dimensionType.is(DimensionTypeTags.AETHER_REGIONS)) {
             cir.setReturnValue(AetherRegionType.THE_AETHER);
         }
     }
 
-    @Inject(at = @At(value = "HEAD"), method = "Lterrablender/util/LevelUtils;initializeBiomes(Lnet/minecraft/core/RegistryAccess;Lnet/minecraft/core/Holder;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/chunk/ChunkGenerator;J)V", remap = false, cancellable = true)
+    @Inject(at = @At(value = "HEAD"), method = "initializeBiomes(Lnet/minecraft/core/RegistryAccess;Lnet/minecraft/core/Holder;Lnet/minecraft/resources/ResourceKey;Lnet/minecraft/world/level/chunk/ChunkGenerator;J)V", remap = false, cancellable = true)
     private static void initializeAetherBiomes(RegistryAccess registryAccess, Holder<DimensionType> dimensionType, ResourceKey<LevelStem> levelResourceKey, ChunkGenerator chunkGenerator, long seed, CallbackInfo ci) {
         {
             RegionType regionType = getRegionTypeForDimension(dimensionType);

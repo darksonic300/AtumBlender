@@ -1,6 +1,5 @@
 package io.github.razordevs.aeroblender.mixin;
 
-
 import io.github.razordevs.aeroblender.AeroBlenderConfig;
 import org.spongepowered.asm.mixin.Mixin;
 import io.github.razordevs.aeroblender.aether.DefaultAetherRegion;

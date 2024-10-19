@@ -18,7 +18,6 @@ public class SurfaceRuleManagerMixin {
     @Shadow
     private static Map<SurfaceRuleManager.RuleCategory, SurfaceRules.RuleSource> defaultSurfaceRules;
 
-
     @Inject(method = "getDefaultSurfaceRules", at = @At("HEAD"), cancellable = true)
     private static void getDefaultSurfaceRules(SurfaceRuleManager.RuleCategory category, CallbackInfoReturnable<SurfaceRules.RuleSource> cir) {
         if (defaultSurfaceRules.containsKey(category)) {

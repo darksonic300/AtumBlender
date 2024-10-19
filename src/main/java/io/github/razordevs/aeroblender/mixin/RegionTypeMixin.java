@@ -18,7 +18,6 @@ import java.util.Arrays;
 @Mixin(value = RegionType.class, remap = false)
 abstract class RegionTypeMixin {
 
-
     @Shadow
     @Final
     @Mutable
@@ -33,7 +32,7 @@ abstract class RegionTypeMixin {
     @Inject(method = "<clinit>", at = @At(value = "FIELD", opcode = Opcodes.PUTSTATIC, target = "Lterrablender/api/RegionType;$VALUES:[Lterrablender/api/RegionType;", shift = At.Shift.AFTER))
     private static void addCustomVariant(CallbackInfo ci) {
         var variants = new ArrayList<>(Arrays.asList(RegionType.values()));
-        var aether = newVariant("THE_AETHER", variants.get(variants.size() - 1).ordinal() + 1);
+        var aether = newVariant("THE_AETHER", variants.getLast().ordinal() + 1);
         AetherRegionType.THE_AETHER = aether;
         variants.add(aether);
         $VALUES = variants.toArray(new RegionType[0]);

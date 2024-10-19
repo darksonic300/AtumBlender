@@ -9,13 +9,9 @@ import java.util.Map;
 
 @Mixin(value = SurfaceRuleManager.class, remap = false)
 public interface SurfaceRuleManagerAccessor {
-    @Accessor
-    static Map<SurfaceRuleManager.RuleCategory, Map<String, SurfaceRules.RuleSource>> getSurfaceRules() {
-        throw new UnsupportedOperationException();
-    }
 
     @Accessor
-    static Map<SurfaceRuleManager.RuleCategory, SurfaceRules.RuleSource> getDefaultSurfaceRules() {
+    static Map<SurfaceRuleManager.RuleCategory, Map<String, SurfaceRules.RuleSource>> getSurfaceRules() {
         throw new UnsupportedOperationException();
     }
 }

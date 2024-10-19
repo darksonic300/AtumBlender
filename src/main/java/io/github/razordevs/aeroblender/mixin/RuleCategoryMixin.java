@@ -19,7 +19,6 @@ import java.util.Arrays;
 @Mixin(value = SurfaceRuleManager.RuleCategory.class, remap = false)
 abstract class RuleCategoryMixin {
 
-
     @Shadow
     @Final
     @Mutable
@@ -31,12 +30,10 @@ abstract class RuleCategoryMixin {
         throw new AssertionError();
     }
 
-    //Ignore Error
-    @SuppressWarnings("UnresolvedMixinReference")
     @Inject(method = "<clinit>", at = @At(value = "FIELD", opcode = Opcodes.PUTSTATIC, target = "Lterrablender/api/SurfaceRuleManager$RuleCategory;$VALUES:[Lterrablender/api/SurfaceRuleManager$RuleCategory;", shift = At.Shift.AFTER))
     private static void addCustomVariant(CallbackInfo ci) {
         var variants = new ArrayList<>(Arrays.asList($VALUES));
-        var aether = newVariant("THE_AETHER", variants.get(variants.size() - 1).ordinal() + 1);
+        var aether = newVariant("THE_AETHER", variants.getLast().ordinal() + 1);
         AetherRuleCategory.THE_AETHER = aether;
         variants.add(aether);
         $VALUES = variants.toArray(new SurfaceRuleManager.RuleCategory[0]);
