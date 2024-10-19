@@ -116,10 +116,6 @@ tasks.withType(JavaCompile).configureEach {
     options.compilerArgs << "-Xmaxerrs" << "9000"
 }
 
-tasks.named('jar', Jar).configure {
-    archiveClassifier = 'no-embeds'
-}
-
 tasks.register('sourceJar', Jar) {
     dependsOn 'classes'
     from sourceSets.main.allSource
