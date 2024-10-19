@@ -1,4 +1,4 @@
-package teamrazor.aeroblender;
+package io.github.razordevs.aeroblender;
 
 import net.neoforged.neoforge.common.ModConfigSpec;
 import org.apache.commons.lang3.tuple.Pair;

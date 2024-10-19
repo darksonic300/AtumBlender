@@ -1,4 +1,4 @@
-package teamrazor.aeroblender.mixin;
+package io.github.razordevs.aeroblender.mixin;
 
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import org.spongepowered.asm.mixin.Mixin;

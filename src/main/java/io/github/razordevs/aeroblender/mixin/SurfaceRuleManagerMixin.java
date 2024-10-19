@@ -1,17 +1,14 @@
-package teamrazor.aeroblender.mixin;
+package io.github.razordevs.aeroblender.mixin;
 
-import com.google.common.collect.Maps;
+import io.github.razordevs.aeroblender.aether.AetherSurfaceRuleData;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import teamrazor.aeroblender.aether.AetherRegionType;
-import teamrazor.aeroblender.aether.AetherRuleCategory;
-import teamrazor.aeroblender.aether.AetherSurfaceRuleData;
+import io.github.razordevs.aeroblender.aether.AetherRuleCategory;
 import terrablender.api.SurfaceRuleManager;
-import terrablender.worldgen.TBSurfaceRuleData;
 
 import java.util.Map;
 

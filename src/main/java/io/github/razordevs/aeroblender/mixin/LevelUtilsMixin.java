@@ -1,10 +1,12 @@
-package teamrazor.aeroblender.mixin;
+package io.github.razordevs.aeroblender.mixin;
 
 
 
 
 import com.google.common.collect.ImmutableList;
-import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import io.github.razordevs.aeroblender.DimensionTypeTags;
+import io.github.razordevs.aeroblender.aether.AetherRegionType;
+import io.github.razordevs.aeroblender.aether.AetherRuleCategory;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
@@ -22,9 +24,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import teamrazor.aeroblender.aether.AetherRegionType;
-import teamrazor.aeroblender.DimensionTypeTags;
-import teamrazor.aeroblender.aether.AetherRuleCategory;
 import terrablender.api.RegionType;
 import terrablender.api.Regions;
 import terrablender.api.SurfaceRuleManager;
@@ -33,7 +32,6 @@ import terrablender.util.LevelUtils;
 import terrablender.worldgen.IExtendedBiomeSource;
 import terrablender.worldgen.IExtendedNoiseGeneratorSettings;
 import terrablender.worldgen.IExtendedParameterList;
-import terrablender.worldgen.IExtendedTheEndBiomeSource;
 
 @Mixin(value = LevelUtils.class)
 public class LevelUtilsMixin {

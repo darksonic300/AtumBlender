@@ -1,9 +1,9 @@
-package teamrazor.aeroblender.mixin;
+package io.github.razordevs.aeroblender.mixin;
 
 
+import io.github.razordevs.aeroblender.AeroBlenderConfig;
 import org.spongepowered.asm.mixin.Mixin;
-import teamrazor.aeroblender.AeroBlenderConfig;
-import teamrazor.aeroblender.aether.DefaultAetherRegion;
+import io.github.razordevs.aeroblender.aether.DefaultAetherRegion;
 import terrablender.api.Regions;
 
 import static terrablender.api.Regions.register;

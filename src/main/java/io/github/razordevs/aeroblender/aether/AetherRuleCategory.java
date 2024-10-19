@@ -1,4 +1,4 @@
-package teamrazor.aeroblender.aether;
+package io.github.razordevs.aeroblender.aether;
 
 
 
