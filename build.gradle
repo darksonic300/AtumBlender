@@ -19,7 +19,6 @@ group = mod_group
 base {
     archivesName = mod_id
 }
-
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
 minecraft.accessTransformers.file rootProject.file('src/main/resources/META-INF/accesstransformer.cfg')
@@ -46,7 +45,7 @@ runs {
     }
 
     data {
-        programArguments.addAll '--mod', mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath(), '--existing', file('src/generated/resources/').getAbsolutePath(), '--existing-mod', 'nitrogen_internals', '--existing-mod', 'cumulus_menus'
+        programArguments.addAll '--mod', mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
     }
 }
 
@@ -70,11 +69,6 @@ repositories {
         dir 'libs'
     }
     mavenLocal()
-}
-
-
-processResources {
-    exclude '.cache/'
 }
 
 dependencies {
