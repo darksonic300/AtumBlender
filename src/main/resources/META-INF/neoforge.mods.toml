@@ -14,7 +14,7 @@ credits = "${mod_credits}"
 authors = "${mod_authors}"
 description = '''${mod_description}'''
 
-[[dependencies.${mod_id}]]
+[[dependencies.aeroblender]]
 modId = "neoforge"
 type = "required"
 versionRange = "${neo_version_range}"
@@ -26,18 +26,18 @@ type = "required"
 versionRange="${minecraft_version_range}"
 ordering = "NONE"
 side = "BOTH"
-[[dependencies.${mod_id}]]
+[[dependencies.aeroblender]]
 modId = "terrablender"
 type = "required"
 versionRange="${terrablender_version_range}"
 ordering = "NONE"
 side = "BOTH"
-[[dependencies.${mod_id}]]
+[[dependencies.aeroblender]]
 modId = "aether"
 type = "required"
 versionRange="${aether_version_range}"
-ordering = "NONE"
+ordering = "AFTER"
 side = "BOTH"
 
 [[mixins]]
-config = "${mod_id}.mixins.json"
+config = "aeroblender.mixins.json"

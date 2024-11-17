@@ -23,7 +23,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import terrablender.api.RegionType;
 import terrablender.api.Regions;
-import terrablender.api.SurfaceRuleManager;
 import terrablender.core.TerraBlender;
 import terrablender.util.LevelUtils;
 import terrablender.worldgen.IExtendedBiomeSource;
@@ -55,28 +54,29 @@ public class LevelUtilsMixin {
         {
             RegionType regionType = getRegionTypeForDimension(dimensionType);
             if (regionType == AetherRegionType.THE_AETHER) {
-                if (shouldApplyToBiomeSource(chunkGenerator.getBiomeSource())) {
-                    NoiseBasedChunkGenerator noiseBasedChunkGenerator = (NoiseBasedChunkGenerator) chunkGenerator;
-
+                if (chunkGenerator instanceof NoiseBasedChunkGenerator noiseBasedChunkGenerator) {
                     NoiseGeneratorSettings generatorSettings = noiseBasedChunkGenerator.generatorSettings().value();
+                    if (shouldApplyToBiomeSource(chunkGenerator.getBiomeSource())) {
 
-                    MultiNoiseBiomeSource biomeSource = (MultiNoiseBiomeSource) chunkGenerator.getBiomeSource();
-                    IExtendedBiomeSource biomeSourceEx = (IExtendedBiomeSource) biomeSource;
-                    SurfaceRuleManager.RuleCategory ruleCategory = AetherRuleCategory.THE_AETHER;
-                    ((IExtendedNoiseGeneratorSettings) (Object) generatorSettings).setRuleCategory(ruleCategory);
+                        MultiNoiseBiomeSource biomeSource = (MultiNoiseBiomeSource) chunkGenerator.getBiomeSource();
+                        IExtendedBiomeSource biomeSourceEx = (IExtendedBiomeSource) biomeSource;
 
-                    Climate.ParameterList parameters = biomeSource.parameters();
-                    IExtendedParameterList parametersEx = (IExtendedParameterList) parameters;
+                        ((IExtendedNoiseGeneratorSettings) (Object) generatorSettings).setRuleCategory(AetherRuleCategory.THE_AETHER);
+                        Climate.ParameterList parameters = biomeSource.parameters();
+                        IExtendedParameterList parametersEx = (IExtendedParameterList) parameters;
+                        parametersEx.initializeForTerraBlender(registryAccess, regionType, seed);
+                        Registry<Biome> biomeRegistry = registryAccess.registryOrThrow(Registries.BIOME);
+                        ImmutableList.Builder<Holder<Biome>> builder = ImmutableList.builder();
+                        Regions.get(regionType).forEach((region) -> region.addBiomes(biomeRegistry, (pair) -> {
+                            if (biomeRegistry.getHolder(pair.getSecond()).isPresent()) {
+                                builder.add(biomeRegistry.getHolderOrThrow(pair.getSecond()));
+                            }
 
-                    parametersEx.initializeForTerraBlender(registryAccess, regionType, seed);
-
-                    Registry<Biome> biomeRegistry = registryAccess.registryOrThrow(Registries.BIOME);
-                    ImmutableList.Builder<Holder<Biome>> builder = ImmutableList.builder();
-                    Regions.get(regionType).forEach(region -> region.addBiomes(biomeRegistry, pair -> builder.add(biomeRegistry.getHolderOrThrow(pair.getSecond()))));
-                    biomeSourceEx.appendDeferredBiomesList(builder.build());
-
-                    TerraBlender.LOGGER.info(String.format("Initialized TerraBlender biomes for level stem %s", levelResourceKey.location()));
-                    ci.cancel();
+                        }));
+                        biomeSourceEx.appendDeferredBiomesList(builder.build());
+                        TerraBlender.LOGGER.info(String.format("Initialized TerraBlender biomes for level stem %s", levelResourceKey.location()));
+                        ci.cancel();
+                    }
                 }
             }
         }
