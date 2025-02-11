@@ -19,8 +19,6 @@ package teamrazor.aeroblender;
 
 import net.minecraftforge.common.ForgeConfigSpec;
 import org.apache.commons.lang3.tuple.Pair;
-import terrablender.config.Config;
-import terrablender.config.ConfigFile;
 
 import java.nio.file.Path;
 
